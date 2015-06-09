@@ -1,28 +1,28 @@
 require 'minitest/autorun'
-require_relative '../lib/chunk'
+require_relative '../lib/parser'
 require_relative '../lib/chunker'
 
-class ChunkTest < Minitest::Test
+class ParserTest < Minitest::Test
 
   def test_renderer_class
     chunker = Chunker.new("Hello\n\nworld\n\n#Mike")
-    chunk = Chunk.new(chunker)
-    assert true, chunk
+    parser = Parser.new(chunker)
+    assert true, parser
   end
 
   def test_that_there_is_empty_output_for_empty_input
 
     chunker = Chunker.new("Hello\n\nworld\n\n#Mike").chunk
-    chunk = Chunk.new(chunker)
+    parser = Parser.new(chunker)
 
-    assert_equal ["Hello", "world", "#Mike"], chunk.chunker
+    assert_equal ["Hello", "world", "#Mike"], parser.chunker
   end
 
-  def test_for_header_#
+  def test_for_parsing
     chunker = Chunker.new("Hello\n\nworld\n\n#Mike").chunk
-    chunk = Chunk.new(chunker)
+    parser = Parser.new(chunker)
 
-    assert_equal "#Mike", chunk.header
+    assert_equal "#Mike", parser.parse
 
   end
 

@@ -5,7 +5,7 @@ require_relative 'chunker'
 require_relative 'header_renderer'
 require_relative 'paragraph_renderer'
 
-class Chunk
+class Parser
 
   attr_reader :chunker
 
@@ -28,5 +28,5 @@ class Chunk
 end
 
 chunker = Chunker.new("Hello\n\nworld\n\n###Mike").chunk
-chunk = Chunk.new(chunker)
-puts chunk.parse
+parser = Parser.new(chunker)
+puts parser.parse
