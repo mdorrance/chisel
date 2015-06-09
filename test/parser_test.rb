@@ -18,11 +18,25 @@ class ParserTest < Minitest::Test
     assert_equal ["Hello", "world", "#Mike"], parser.chunker
   end
 
-  def test_for_parsing
+  def test_return_array_of_html
+    skip
     chunker = Chunker.new("Hello\n\nworld\n\n#Mike").chunk
     parser = Parser.new(chunker)
+    output = <<-EOS
+["<p>
+    Hello
+  </p>
 
-    assert_equal "#Mike", parser.parse
+", "<p>
+world
+</p>
+
+", "<h1> Mike </h1>
+
+"]
+EOS
+
+    assert_equal output, parser.parse
 
   end
 

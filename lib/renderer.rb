@@ -4,8 +4,6 @@
 
 
 class Renderer
-  def initialize(input)
 
-  end
 
 end

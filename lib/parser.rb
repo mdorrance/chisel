@@ -18,15 +18,18 @@ class Parser
   def parse
     @chunker.map do |chunk|
       if chunk.start_with?("#")
-        puts @header_renderer.format(chunk)
+        @header_renderer.format(chunk)
       else
-        puts @paragraph_renderer.format(chunk)
+        @paragraph_renderer.format(chunk)
       end
     end
   end
 
 end
 
-chunker = Chunker.new("Hello\n\nworld\n\n###Mike").chunk
-parser = Parser.new(chunker)
-puts parser.parse
+if __FILE__ == $PROGRAM_NAME
+  chunker = Chunker.new("**Hello** mike\n\n*the*world\n\n###Mike").chunk
+  parser = Parser.new(chunker)
+  puts parser.parse
+end
+
