@@ -40,7 +40,6 @@ class EmRendererTest < Minitest::Test
   end
 
   def test_it_formats_multiple_em_within_a_numeric_string
-    skip
     input = "hello *1.2345* world, *hi*"
     expected = "hello <em>1.2345</em> world, <em>hi</em>"
     renderer = EmRenderer.new

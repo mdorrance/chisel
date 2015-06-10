@@ -14,3 +14,4 @@ class StrongRenderer
   end
 
 end
+

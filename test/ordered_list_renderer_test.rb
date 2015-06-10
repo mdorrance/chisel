@@ -15,19 +15,19 @@ class OrderedListRendererTest < Minitest::Test
 
   def test_it_renders_a_single_item_list
     input = "1. hello"
-    expected = "<ol>\n  <li>hello</li>\n</ol>"
+    expected = "<ol>\n  <li>hello</li>\n</ol>\n\n"
     assert_equal expected, renderer.format(input)
   end
 
   def test_it_renders_a_two_item_list
     input = "1. hello\n2. world"
-    expected = "<ol>\n  <li>hello</li>\n  <li>world</li>\n</ol>"
+    expected = "<ol>\n  <li>hello</li>\n  <li>world</li>\n</ol>\n\n"
     assert_equal expected, renderer.format(input)
   end
 
   def test_it_renders_a_three_item_list
     input = "1. hello\n2. world\n3. universe"
-    expected = "<ol>\n  <li>hello</li>\n  <li>world</li>\n  <li>universe</li>\n</ol>"
+    expected = "<ol>\n  <li>hello</li>\n  <li>world</li>\n  <li>universe</li>\n</ol>\n\n"
     assert_equal expected, renderer.format(input)
   end
 

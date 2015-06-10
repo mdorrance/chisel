@@ -40,9 +40,8 @@ class StrongRendererTest < Minitest::Test
   end
 
   def test_it_formats_a_strong_with_numbers_within_a_string
-    skip
-    input = "hello**1.2345**world"
-    expected = "hello<strong>1.2345</strong>world"
+    input = "hello **1.2345** world"
+    expected = "hello <strong>1.2345</strong> world"
     renderer = StrongRenderer.new
     output = renderer.format(input)
     assert_equal expected, output

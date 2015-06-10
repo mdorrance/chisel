@@ -14,14 +14,9 @@ class HeaderRendererTest < Minitest::Test
   # end
 
   def test_that_there_is_empty_output_for_h1_string
-    skip
     header_renderer = HeaderRenderer.new
     input = "#mike"
-    expected = <<-EOS
-""<h1> mike </h1>
-
-"
-EOS
+    expected = "<h1> mike </h1>\n\n"
     assert_equal expected, header_renderer.format(input)
   end
 

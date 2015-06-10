@@ -15,20 +15,21 @@ class UnorderedListRendererTest < Minitest::Test
 
   def test_it_renders_a_single_item_list
     input = "1. hello"
-    expected = "<ul>\n  <li>hello</li>\n</ul>"
+    expected = "<ul>\n  <li>hello</li>\n</ul>\n\n"
     assert_equal expected, renderer.format(input)
   end
 
   def test_it_renders_a_two_item_list
     input = "1. hello\n2. world"
-    expected = "<ul>\n  <li>hello</li>\n  <li>world</li>\n</ul>"
+    expected = "<ul>\n  <li>hello</li>\n  <li>world</li>\n</ul>\n\n"
     assert_equal expected, renderer.format(input)
   end
 
   def test_it_renders_a_three_item_list
     input = "1. hello\n2. world\n3. universe"
-    expected = "<ul>\n  <li>hello</li>\n  <li>world</li>\n  <li>universe</li>\n</ul>"
+    expected = "<ul>\n  <li>hello</li>\n  <li>world</li>\n  <li>universe</li>\n</ul>\n\n"
     assert_equal expected, renderer.format(input)
   end
 
 end
+
