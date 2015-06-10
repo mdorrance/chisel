@@ -31,5 +31,11 @@ class UnorderedListRendererTest < Minitest::Test
     assert_equal expected, renderer.format(input)
   end
 
+  def test_it_renders_a_three_item_list_with_em_and_strong
+    input = "1. **hell**o\n2. world\n3. universe *man*"
+    expected = "<ul>\n  <li><strong>hell</strong>o</li>\n  <li>world</li>\n  <li>universe <em>man</em></li>\n</ul>\n\n"
+    assert_equal expected, renderer.format(input)
+  end
+
 end
 

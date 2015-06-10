@@ -3,9 +3,9 @@
 ## Chapter 1: The Beginning
 
 "You just *have* to try the cheesecake," he said. "Ever since it appeared in
-**Food & Wine** this place has been packed every night."
+**Food & Wine** this place has been [This link](http://example.net/) packed every night."
 
-You are the bomb:
+You are the bomb [an example](http://example.com/ "Title"):
 
 * lighter
 * wick

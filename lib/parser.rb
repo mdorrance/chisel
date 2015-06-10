@@ -13,7 +13,10 @@ class Parser
   attr_reader :chunker,
               :header_renderer,
               :paragraph_renderer,
-              :unordered_list_renderer, :ordered_list_renderer, :identifier
+              :unordered_list_renderer,
+              :ordered_list_renderer,
+              :identifier,
+              :links
 
   def initialize(chunker)
     @chunker = chunker
@@ -21,6 +24,7 @@ class Parser
     @paragraph_renderer = ParagraphRenderer.new
     @ordered_list_renderer = OrderedListRenderer.new
     @unordered_list_renderer = UnorderedListRenderer.new
+    @links_renderer = LinksRenderer.new
     @identifier = ChunkIdentifier.new
   end
 
@@ -33,6 +37,7 @@ class Parser
         when :header    then header_renderer.format(chunk)
         when :ordered_list then ordered_list_renderer.format(chunk)
         when :unordered_list then unordered_list_renderer.format(chunk)
+        when :links then links_renderer.format(chunk)
       end
 
       # if chunk.start_with?("#")

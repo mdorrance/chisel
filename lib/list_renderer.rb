@@ -1,4 +1,14 @@
+require './lib/em_renderer'
+require './lib/strong_renderer'
+
 module ListRenderer
+
+  def initialize
+    @em_renderer = EmRenderer.new
+    @strong_renderer = StrongRenderer.new
+    @parse = ""
+  end
+
   def format(input)
     opener + list_items_from(input) + closing
   end
@@ -15,7 +25,9 @@ module ListRenderer
 
   def list_item_from(input)
     opener = "  <li>"
-    content = input[(input.index(" ") + 1)..-1]
+    @parse = @strong_renderer.format(input)
+    final = @em_renderer.format(@parse)
+    content = final[(final.index(" ") + 1)..-1]
     closer = "</li>\n"
 
     opener + content + closer
