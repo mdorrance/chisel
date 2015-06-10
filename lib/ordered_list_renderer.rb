@@ -8,7 +8,7 @@ class OrderedListRenderer
   end
 
   def closing
-    "</ol>"
+    "</ol>\n\n"
   end
 end
 

@@ -8,6 +8,6 @@ class UnorderedListRenderer
   end
 
   def closing
-    "</ul>"
+    "</ul>\n\n"
   end
 end

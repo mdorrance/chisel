@@ -2,3 +2,43 @@
 
 #As a User I will want to enter the md file and just get the output
 #chisel will read the markdown file and then output the html file
+
+# $ ruby ./lib/chisel.rb my_input.markdown my_output.html
+# Converted my_input.markdown (6 lines) to my_output.html (8 lines)
+require_relative '../lib/chunker'
+require_relative '../lib/parser'
+
+class Chisel
+
+  attr_reader :message_file
+  attr_accessor :html_file_name
+
+  def initialize(markdown_file, html_file_name)
+    @markdown_file = markdown_file
+    @html_file_name = html_file_name
+  end
+
+  def file_reader
+    markdown_file = File.open("./lib/#{@markdown_file}", "r").read
+    html_message = Parser.new(Chunker.new(markdown_file).chunk).parse
+    write_html_file(html_message)
+  end
+
+  def write_html_file(html_message)
+    write_file = File.open("./lib/#{@html_file_name}", "w")
+    write_file.write(html_message)
+    write_file.close
+
+    # File.open(@encrypted_file_name, "w") do |f|
+    #   f.write(encrypted_message)
+    # end
+  end
+
+end
+
+
+if __FILE__ == $0
+  chisel = Chisel.new(ARGV[0], ARGV[1])
+  chisel.file_reader
+  puts "Converted #{ARGV[0]} (lines) to  #{ARGV[1]} (lines)"
+end
