@@ -3,42 +3,32 @@ require_relative '../lib/paragraph_renderer'
 
 class ParagraphRendererTest < Minitest::Test
 
-  def test_renderer_class
-    assert ParagraphRenderer
+  attr_reader :renderer
 
+  def setup
+    @renderer = ParagraphRenderer.new
   end
-  #
-  # def test_that_there_is_empty_output_for_empty_input
-  #   skip
-  #   paragragh_renderer = ParagraphRenderer.new
-  #
-  # end
 
-  def test_that_there_is_empty_output_for_p_string
-    header_renderer = ParagraphRenderer.new
+  def assert_formatted(expected, input)
+    assert_equal expected, renderer.format(input).strip
+  end
+
+  def test_that_there_is_output_for_p_string
     input = "mike"
-    expected = <<-EOS
-"<p>
-  mike
-</p>
-
-    EOS
-    assert_equal expected, header_renderer.format(input)
+    expected = "<p>\n  mike\n</p>"
+    assert_formatted(expected, input)
   end
 
   def test_that_there_is_p_with_strong_string
-
-    header_renderer = ParagraphRenderer.new
     input = "mike **hi** there"
-    expected = "<p> mike <strong>hi</strong> there </p>"
-    assert_equal expected, header_renderer.format(input)
+    expected = "<p>\n  mike <strong>hi</strong> there\n</p>"
+    assert_formatted(expected, input)
   end
 
   def test_that_there_is_p_with_strong_and_em_string
-    header_renderer = ParagraphRenderer.new
     input = "mike **hi** there *dude* guy"
-    expected = "<p> mike <strong>hi</strong> there <em>dude</em> guy </p>"
-    assert_equal expected, header_renderer.format(input)
+    expected = "<p>\n  mike <strong>hi</strong> there <em>dude</em> guy\n</p>"
+    assert_formatted(expected, input)
   end
 
 end

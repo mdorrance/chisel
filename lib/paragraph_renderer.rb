@@ -1,3 +1,6 @@
+require './lib/em_renderer'
+require './lib/strong_renderer'
+
 class ParagraphRenderer
 
   def initialize

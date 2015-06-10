@@ -30,7 +30,7 @@ EOS
     header_renderer = HeaderRenderer.new
     input = "#mike **hi** there"
     expected = "<h1> mike <strong>hi</strong> there </h1>"
-    assert_equal expected, header_renderer.format(input)
+    assert_equal expected, header_renderer.format(input).strip
   end
 
   def test_that_there_is_h1_with_strong_and_em_string
@@ -38,7 +38,7 @@ EOS
     header_renderer = HeaderRenderer.new
     input = "#mike **hi** there *dude* guy"
     expected = "<h1> mike <strong>hi</strong> there <em>dude</em> guy </h1>"
-    assert_equal expected, header_renderer.format(input)
+    assert_equal expected, header_renderer.format(input).strip
   end
 
 
