@@ -24,4 +24,11 @@ class OrderedListRendererTest < Minitest::Test
     expected = "<ol>\n  <li>hello</li>\n  <li>world</li>\n</ol>"
     assert_equal expected, renderer.format(input)
   end
+
+  def test_it_renders_a_three_item_list
+    input = "1. hello\n2. world\n3. universe"
+    expected = "<ol>\n  <li>hello</li>\n  <li>world</li>\n  <li>universe</li>\n</ol>"
+    assert_equal expected, renderer.format(input)
+  end
+
 end
