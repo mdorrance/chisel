@@ -16,16 +16,6 @@ class LinksRenderer
     @md_link = ""
   end
 
-  # md = something [text](url) else [text](url) whatever
-  # split = md.split('[') #=> [something , text](url) else , text](url) whatever]
-  # first = split.shift
-  # split.each do |remainder|
-  #   # text](url) else
-  #   split2 = remainder.split(']') #=> [text, (url) else ]
-  #   text = split2.first
-  #
-  # end
-
   def pre_link(chunk)
     if chunk.index('[') > 0
       close = chunk.index('[')
@@ -71,14 +61,6 @@ class LinksRenderer
       title
     else
       title = " \"\""
-    end
-  end
-
-  def format_one_link
-    if @md_link.empty?
-      @chunk
-    else
-      @chunk = "#{pre_link(chunk)}<a href=\"#{url(chunk)}\" title=#{title(chunk)}> #{link(chunk)}</a>#{post_link(chunk)}"
     end
   end
 

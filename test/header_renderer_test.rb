@@ -28,4 +28,12 @@ class HeaderRendererTest < Minitest::Test
     assert_equal expected, header_renderer.format(input).strip
   end
 
+  def test_that_there_is_h1_with_strong_and_em_string
+    header_renderer = HeaderRenderer.new
+    input = "#mike <strong>hi</strong> there <em>dude</em> guy"
+    expected = "<h1> mike <strong>hi</strong> there <em>dude</em> guy </h1>"
+    assert_equal expected, header_renderer.format(input).strip
+  end
+
+
 end
