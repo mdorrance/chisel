@@ -1,15 +1,4 @@
 class LinksRenderer
-  #
-  # This is [an example](http://example.com/ "Title") inline link.
-  # [This link](http://example.net/) has no title attribute.
-  #<p>This is <a href="http://example.com/" title="Title">
-  # an example</a> inline link.</p>
-  # <p><a href="http://example.net/">This link</a> has no
-  # title attribute.</p>
-  #Need to identify when there are a pair of []next to ()
-
-  #find the brackets and strip that into a variable then find the
-  #parens content and strip it into a variable
 
   def initialize
     @pre_link = ""

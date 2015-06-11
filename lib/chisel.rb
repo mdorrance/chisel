@@ -1,10 +1,3 @@
-#this is the runner file that will do the least amount of work
-
-#As a User I will want to enter the md file and just get the output
-#chisel will read the markdown file and then output the html file
-
-# $ ruby ./lib/chisel.rb my_input.markdown my_output.html
-# Converted my_input.markdown (6 lines) to my_output.html (8 lines)
 require_relative '../lib/chunker'
 require_relative '../lib/parser'
 

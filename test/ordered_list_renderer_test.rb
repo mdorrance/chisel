@@ -32,7 +32,7 @@ class OrderedListRendererTest < Minitest::Test
   end
 
   def test_it_renders_a_three_item_list_with_em_and_strong
-    input = "1. hello\n2. world *war*\n3. universe **man** woman"
+    input = "1. hello\n2. world <em>war</em>\n3. universe <strong>man</strong> woman"
     expected = "<ol>\n  <li>hello</li>\n  <li>world <em>war</em></li>\n  <li>universe <strong>man</strong> woman</li>\n</ol>\n\n"
     assert_equal expected, renderer.format(input)
   end

@@ -1,20 +1,11 @@
-require './lib/em_renderer'
-require './lib/strong_renderer'
-
 module ListRenderer
 
-  def initialize
-    @em_renderer = EmRenderer.new
-    @strong_renderer = StrongRenderer.new
-    @parse = ""
+  def format(chunk)
+    opener + list_items_from(chunk) + closing
   end
 
-  def format(input)
-    opener + list_items_from(input) + closing
-  end
-
-  def list_items_from(input)
-    items = input.split("\n")
+  def list_items_from(chunk)
+    items = chunk.split("\n")
 
     rendered_items = items.map do |item|
       list_item_from(item)
@@ -25,11 +16,10 @@ module ListRenderer
 
   def list_item_from(input)
     opener = "  <li>"
-    @parse = @strong_renderer.format(input)
-    final = @em_renderer.format(@parse)
-    content = final[(final.index(" ") + 1)..-1]
+    content = input[(input.index(" ") + 1)..-1]
     closer = "</li>\n"
 
     opener + content + closer
   end
+
 end
