@@ -22,8 +22,8 @@ class Chisel
     markdown_file = File.open("./lib/#{@markdown_file}", "r").read
     html_message = Parser.new(Chunker.new(markdown_file).chunk).parse
 
-    @md_num_of_lines = markdown_file.count "\n"
-    @html_num_of_lines = html_message.count "\n"
+    @md_num_of_lines = markdown_file.count("\n") + 1
+    @html_num_of_lines = html_message.count("\n") + 1
 
     write_html_file(html_message)
   end
@@ -32,10 +32,6 @@ class Chisel
     File.open("./lib/#{@html_file_name}", "w") do |f|
       f.write(html_message)
     end
-
-    # File.open(@encrypted_file_name, "w") do |f|
-    #   f.write(encrypted_message)
-    # end
   end
 
 end

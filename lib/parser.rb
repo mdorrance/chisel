@@ -25,6 +25,8 @@ class Parser
     @ordered_list_renderer = OrderedListRenderer.new
     @unordered_list_renderer = UnorderedListRenderer.new
     @links_renderer = LinksRenderer.new
+    @em_renderer = EmRenderer.new
+    @strong_renderer = StrongRenderer.new
     @identifier = ChunkIdentifier.new
   end
 
@@ -32,19 +34,16 @@ class Parser
     @chunker.map do |chunk|
       chunk_type = identifier.identify(chunk)
 
+      chunk = @strong_renderer.format(chunk)
+      chunk = @em_renderer.format(chunk)
+      chunk = @links_renderer.format(chunk)
+
       case chunk_type
         when :paragraph then paragraph_renderer.format(chunk)
         when :header    then header_renderer.format(chunk)
         when :ordered_list then ordered_list_renderer.format(chunk)
         when :unordered_list then unordered_list_renderer.format(chunk)
-        when :links then links_renderer.format(chunk)
       end
-
-      # if chunk.start_with?("#")
-      #   @header_renderer.format(chunk)
-      # else
-      #   @paragraph_renderer.format(chunk)
-      # end
     end.join
   end
 

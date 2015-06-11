@@ -7,8 +7,6 @@ class ChunkIdentifier
       :ordered_list
     elsif input.start_with?("* ")
       :unordered_list
-    elsif input.start_with?("[")
-      :links
     else
       :paragraph
     end
