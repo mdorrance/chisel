@@ -62,4 +62,11 @@ class LinksRendererTest < Minitest::Test
     assert_equal expected, output
   end
 
+  def test_it_gets_section_of_code_with_multiple_links
+    input = "hello world [an example](http://example.com/) hi there [another example](http://anexample.com/) more"
+    expected = "hello world <a href=\"http://example.com/\" title= \"\"> an example</a> hi there <a href=\"http://anexample.com/\" title= \"\"> another example</a> more"
+    output = renderer.format(input)
+    assert_equal expected, output
+  end
+
 end

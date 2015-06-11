@@ -19,7 +19,18 @@ class LinksRenderer
     @link = ""
     @pre_link = ""
     @post_link = ""
+    @md_link = ""
   end
+
+  # md = something [text](url) else [text](url) whatever
+  # split = md.split('[') #=> [something , text](url) else , text](url) whatever]
+  # first = split.shift
+  # split.each do |remainder|
+  #   # text](url) else
+  #   split2 = remainder.split(']') #=> [text, (url) else ]
+  #   text = split2.first
+  #
+  # end
 
   def pre_link(chunk)
     if chunk.index('[') > 0
@@ -30,38 +41,59 @@ class LinksRenderer
     end
   end
 
+  def md_link(chunk)
+    open = chunk.index('[')
+    close = chunk.index(')')
+
+    return "" unless open && close
+
+    chunk[(open)..(close)]
+  end
+
   def link(chunk)
     open = chunk.index('[')
     close = chunk.index(']')
-    @link = chunk[(open+1)..(close-1)]
+    chunk[(open+1)..(close-1)]
   end
 
   def post_link(chunk)
     open = chunk.index(')')
-    @post_link = chunk[(open+1)..(-1)]
+    chunk[(open+1)..(-1)]
   end
 
   def url(chunk)
     open = chunk.index('(')
     close = chunk.rindex('/')
-    @url = chunk[(open+1)..(close)]
+    chunk[(open+1)..(close)]
   end
 
   def title(chunk)
     open = chunk.rindex('/')
     close = chunk.index(')')
 
-    @title = chunk[(open+1)..(close-1)]
+    title = chunk[(open+1)..(close-1)]
 
-    if @title.include? "\""
-      @title
+    if title.include? "\""
+      title
     else
-      @title = " \"\""
+      title = " \"\""
+    end
+  end
+
+  def format_one_link
+    if @md_link.empty?
+      @chunk
+    else
+      @chunk = "#{pre_link(chunk)}<a href=\"#{url(chunk)}\" title=#{title(chunk)}> #{link(chunk)}</a>#{post_link(chunk)}"
     end
   end
 
   def format(chunk)
-    "#{pre_link(chunk)}<a href=\"#{url(chunk)}\" title=#{title(chunk)}> #{link(chunk)}</a>#{post_link(chunk)}"
+    until (link_chunk = md_link(chunk)).empty?
+      chunk = "#{pre_link(chunk)}<a href=\"#{url(link_chunk)}\" title=#{title(link_chunk)}> #{link(link_chunk)}</a>#{post_link(chunk)}"
+    end
+
+    chunk
   end
 
 end
