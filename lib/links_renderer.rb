@@ -17,12 +17,28 @@ class LinksRenderer
     @title = ""
     @url = ""
     @link = ""
+    @pre_link = ""
+    @post_link = ""
+  end
+
+  def pre_link(chunk)
+    if chunk.index('[') > 0
+      close = chunk.index('[')
+      @pre_link = chunk[(0)..(close-1)]
+    else
+      @prelink
+    end
   end
 
   def link(chunk)
     open = chunk.index('[')
     close = chunk.index(']')
     @link = chunk[(open+1)..(close-1)]
+  end
+
+  def post_link(chunk)
+    open = chunk.index(')')
+    @post_link = chunk[(open+1)..(-1)]
   end
 
   def url(chunk)
@@ -45,7 +61,7 @@ class LinksRenderer
   end
 
   def format(chunk)
-    "<a href=\"#{url(chunk)}\" title=#{title(chunk)}> #{link(chunk)}</a>"
+    "#{pre_link(chunk)}<a href=\"#{url(chunk)}\" title=#{title(chunk)}> #{link(chunk)}</a>#{post_link(chunk)}"
   end
 
 end

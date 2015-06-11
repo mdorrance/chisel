@@ -50,9 +50,5 @@ class Parser
 
 end
 
-if __FILE__ == $PROGRAM_NAME
-  chunker = Chunker.new("**Hello** mike\n\n*the*world\n\n###Mike").chunk
-  parser = Parser.new(chunker)
-  puts parser.parse
-end
+
 

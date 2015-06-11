@@ -48,4 +48,18 @@ class LinksRendererTest < Minitest::Test
     assert_equal expected, output
   end
 
+  def test_it_gets_section_of_code_before_the_link
+    input = "hello world [an example](http://example.com/) hi there"
+    expected = "hello world "
+    output = renderer.pre_link(input)
+    assert_equal expected, output
+  end
+
+  def test_it_gets_section_of_code_after_the_link
+    input = "hello world [an example](http://example.com/) hi there"
+    expected = " hi there"
+    output = renderer.post_link(input)
+    assert_equal expected, output
+  end
+
 end
