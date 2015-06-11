@@ -12,13 +12,7 @@ class LinksRenderer
   #parens content and strip it into a variable
 
   def initialize
-    @bracket_pairs = 0
-    @parens_pairs = 0
-    @title = ""
-    @url = ""
-    @link = ""
     @pre_link = ""
-    @post_link = ""
     @md_link = ""
   end
 

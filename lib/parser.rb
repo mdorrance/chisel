@@ -7,6 +7,7 @@ require_relative 'paragraph_renderer'
 require './lib/chunk_identifier'
 require_relative 'ordered_list_renderer'
 require_relative 'unordered_list_renderer'
+require_relative 'links_renderer'
 
 class Parser
 
