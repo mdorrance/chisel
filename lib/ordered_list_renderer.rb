@@ -10,4 +10,5 @@ class OrderedListRenderer
   def closing
     "</ol>\n\n"
   end
+
 end

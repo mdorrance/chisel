@@ -20,13 +20,13 @@ class ParagraphRendererTest < Minitest::Test
   end
 
   def test_that_there_is_p_with_strong_string
-    input = "mike **hi** there"
+    input = "mike <strong>hi</strong> there"
     expected = "<p>\n  mike <strong>hi</strong> there\n</p>"
     assert_formatted(expected, input)
   end
 
   def test_that_there_is_p_with_strong_and_em_string
-    input = "mike **hi** there *dude* guy"
+    input = "mike <strong>hi</strong> there <em>dude</em> guy"
     expected = "<p>\n  mike <strong>hi</strong> there <em>dude</em> guy\n</p>"
     assert_formatted(expected, input)
   end

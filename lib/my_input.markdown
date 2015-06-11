@@ -8,15 +8,15 @@
 You are the bomb [an example](http://example.com/ "Title"):
 
 * lighter
-* wick
+* wick [an example](http://example.com/ "Title") dude
 * explosive
 
 Stop it!
 
 1. yo
 2. La Tee
-3. Da Da
+3. Da Da [an example](http://example.com/ "Title") DOOP
 
-###### This is NOT a drill!
+###### This is NOT a [an example](http://example.com/ "Title") drill!
 
 [an example](http://example.com/ "Title")
