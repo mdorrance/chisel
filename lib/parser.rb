@@ -8,6 +8,8 @@ require './lib/chunk_identifier'
 require_relative 'ordered_list_renderer'
 require_relative 'unordered_list_renderer'
 require_relative 'links_renderer'
+require_relative 'em_renderer'
+require_relative 'strong_renderer'
 
 class Parser
 
